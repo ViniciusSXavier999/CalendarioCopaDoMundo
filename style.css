@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  background-color: #121214; 
+  background-image: url(./assets/bg.svg);
+  background-position-x: center;
+  background-position-y: -815px;
+}
+
+body * {
+  font-family: 'Roboto', sans-serif;
+}
+
+#app {
+  width: fit-content;
+  margin: 52px auto;
+}
+
+header {
+  margin-bottom: 63px;
+  text-align: center;
+}
+
+.card {
+  /*O PRIMEIRO ALTERA A PARTE DE CIMA E O SEGUNDO A PARTE DEBAIXO*/
+  padding: 32px 23px;
+  text-align: center;
+
+  /*Cor do fundo*/
+  background: #1d1c19;
+
+  /*ALTERA A BORDA DA PARTE DEBAIXO SOMENTE*/
+  border-bottom: 2px solid #f7dd43;
+
+  /*PARA DEIXAR A BORDA REDONDA*/
+  border-radius: 6px;
+}
+
+.card h2 {
+
+  /*FAZ COM QUE AS PROPRIEDADES FIQUEM COLADAS UMA DO LADO DA OUTRA*/
+  display: flex;
+  gap: 17px;
+  justify-content: center;
+  align-items: center;
+
+  /*PREENCHIMENTO*/
+  padding: 8px 32px;
+  border: 1px solid #746615;
+  border-radius: 6px;
+
+  width: fit-content;
+  margin-inline: auto;
+  margin-bottom: 53px;
+
+  color: #F7DD43;
+}
+
+/*EXEMPLO DE ESPECIFICIDADE*/
+.card h2 span {
+  color: #E1E1E6;
+  font-size: 14px;
+
+  /*TUDO EM LETRA MAIUSCULA*/
+  text-transform: uppercase;
+}
+
+.card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  /*LARGURA DA CAIXA*/
+  width: 270px;
+}
+
+.card ul li {
+  /*Para ele desbloqeuar propriedades para mim*/
+  display: flex;
+  align-items: center;
+
+/*ESPAÇO ENTRE OS ELEMENTOS*/
+  justify-content: space-between;
+}
+
+/*VAI PEGAR O LI ANTERIOR.*/
+.card ul li + li {
+  padding-top:25px;
+  border-top: 1px solid #323238;
+}
+
+.card ul li strong{
+  font-weight: 900;
+  font-size: 35px;
+  line-height: 125%;
+
+  color: #E1E1E6;
+}
+
