@@ -1,7 +1,44 @@
+/*REFACTOR-> SERVE POR EXEMPLO PARA QUANDO EU PASSAR O MOUSE EM CIMA DA BANDEIRA DO PAIS
+OU DO HORARIO, POR EXEMPLO, ELE IRA FAZER UM TIPO DE ANIMAÇÃO, SUBIR A BANDEIRA PRA CIMA,
+AUMENTAR O TAMANHO DELA, ENTRE OUTRAS ANIMAÇÕES*/
+/*---------------------------------------------------------------------------------------*/
+
+/*ANIMAÇÃO -> ELA FUNCIONA DE FORMA PARECIDA COM A TRANSIÇÃO, MAS PRIMEIRO CRIAR UMA ANIMÇÃO UTILIZANDO O @keyframes  */
+
+/*---------------------------------------------------------------------------------------*/
+
+/*RESPONSIVIDADE -> ADAPTAÇÃO DE TUDO QUE EU FIZER PARA DISPOSITIVOS MOVEIS OU DESKTOPS, FAZEMOS ISSO ATRAVES DA @MEDIA(){}  */
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/*PODEMOS COLOCAR AS CORES COMO VARIAVEIS*/
+
+/*root -> esse seletor seleciona a raiz do html e vai aplicar as cores que eu aplicar*/
+:root {
+  --card-titulo-borda-cor: #746615;
+  --card-cor-primaria: #f7dd43;
+  --card-fundo-cor: #1d1c19;
+  --bg: url(./assets/bg-yellow.svg)
+}
+
+/*ORGANIZANDO PARA COLOCAR UMA CLASSE NO MEU BODY*/
+body.blue {
+    --card-titulo-borda-cor: #338AF3;
+  --card-cor-primaria: #338AF3;
+  --card-fundo-cor: #16162b;
+   --bg: url(./assets/bg-blue.svg)
+}
+
+body.green {
+   --card-titulo-borda-cor: #047c3f;
+  --card-cor-primaria: #047c3f;
+  --card-fundo-cor: #091c0c;
+   --bg: url(./assets/bg-green.svg)
 }
 
 ul {
@@ -9,10 +46,13 @@ ul {
 }
 
 body {
-  background-color: #121214; 
-  background-image: url(./assets/bg.svg);
-  background-position-x: center;
-  background-position-y: -815px;
+  background-color: #121214;
+  background-image: var(--bg);
+
+  /*MESMA COISA DE EU COLOCAR Y TOP E X CENTER*/
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 body * {
@@ -21,7 +61,8 @@ body * {
 
 #app {
   width: fit-content;
-  margin: 52px auto;
+  margin: auto;
+  padding-top: 52px;
 }
 
 header {
@@ -46,10 +87,10 @@ header {
   text-align: center;
 
   /*Cor do fundo*/
-  background: #1d1c19;
+  background:  var(--card-fundo-cor);
 
   /*ALTERA A BORDA DA PARTE DEBAIXO SOMENTE*/
-  border-bottom: 2px solid #f7dd43;
+  border-bottom: 2px solid var(--card-cor-primaria);
 
   /*PARA DEIXAR A BORDA REDONDA*/
   border-radius: 6px;
@@ -65,14 +106,14 @@ header {
 
   /*PREENCHIMENTO*/
   padding: 8px 32px;
-  border: 1px solid #746615;
+  border: 1px solid var(--card-titulo-borda-cor);
   border-radius: 6px;
 
   width: fit-content;
   margin-inline: auto;
   margin-bottom: 53px;
 
-  color: #F7DD43;
+  color: #f7dd43;
 }
 
 /*EXEMPLO DE ESPECIFICIDADE*/
@@ -114,5 +155,50 @@ header {
   line-height: 125%;
 
   color: #E1E1E6;
+}
+
+/*A virgula significa que eu estou agrupando dois seletores para receber as mesmas coisas*/
+.card h2:hover,
+.card ul li strong:hover,
+.card ul li img:hover {
+  transform: scale(1.2);
+}
+
+.card h2,
+.card ul li strong,
+.card ul li img {
+  transition: transform 0.3s;
+}
+
+
+.card {
+  animation: appear .2s;
+}
+
+/*ANIMAÇÃO*/
+
+/*REGRINHA CRIADA*/
+@keyframes appear {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*AQUI EU ESTOU DIZENDO QUE DA LARGURA MINIMA DE 400PX, EU VOU APLICAR O FLEX-DIRECTION VAI SER EM LINHA */
+@media (min-width: 400px) {
+  #cards {
+    /*aqui estou dizendo que a largura maxima da minha caixa #cards é de 700px*/
+    max-width: 700px;
+
+    /*estou deizendo que os cards ficaram um do lado do outro*/
+    flex-direction: row;
+
+    /*esse metodo define que após a largura maxima ser atingida o proximo conteudo vai para baixo(o proximo card vai para baixo)*/
+    flex-wrap: wrap;
+  }
 }
 
